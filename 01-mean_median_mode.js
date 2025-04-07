@@ -15,9 +15,9 @@ function processData(input) {
     let median = null
 
     if (len % 2 === 0) {
-      median = (sorted[mid] + sorted[mid - 1]) / 2
+      median = (sorted[mid - 1] + sorted[mid]) / 2
     } else {
-      median = sorted[mid] / 2
+      median = sorted[mid]
     }
 
     return median.toFixed(1)
