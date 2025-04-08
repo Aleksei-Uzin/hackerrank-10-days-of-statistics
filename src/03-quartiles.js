@@ -27,14 +27,34 @@ function readLine() {
  *
  * The function is expected to return an INTEGER_ARRAY.
  * The function accepts INTEGER_ARRAY arr as parameter.
+ *
+ * https://en.wikipedia.org/wiki/Quartile
+ * Method 1
+ *
  */
 
 function quartiles(arr) {
   const sorted = [...arr].sort((a, b) => a - b)
   const len = sorted.length
   const mid = Math.floor(len / 2)
-  const lowerHalf = sorted.slice(0, mid)
-  const upperHalf = sorted.slice(len % 2 ? mid + 1 : mid)
+  const lowerHalf = []
+  const upperHalf = []
+
+  if (len % 2 === 1) {
+    // If there are an odd number of data points in the original ordered data set,
+    // do not include the median (the central value in the ordered list) in either half.
+    for (let i = 0; i < sorted.length; i++) {
+      if (i < mid) lowerHalf.push(sorted[i])
+      if (i > mid) upperHalf.push(sorted[i])
+    }
+  } else {
+    // If there are an even number of data points in the original ordered data set,
+    // split this data set exactly in half.
+    for (let i = 0; i < sorted.length; i++) {
+      if (i < mid) lowerHalf.push(sorted[i])
+      if (i >= mid) upperHalf.push(sorted[i])
+    }
+  }
 
   const Q1 = calcMedian(lowerHalf)
   const Q2 = calcMedian(sorted)
