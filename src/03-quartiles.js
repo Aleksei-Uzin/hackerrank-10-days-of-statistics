@@ -43,14 +43,14 @@ function quartiles(arr) {
   if (len % 2 === 1) {
     // If there are an odd number of data points in the original ordered data set,
     // do not include the median (the central value in the ordered list) in either half.
-    for (let i = 0; i < sorted.length; i++) {
+    for (let i = 0; i < len; i++) {
       if (i < mid) lowerHalf.push(sorted[i])
       if (i > mid) upperHalf.push(sorted[i])
     }
   } else {
     // If there are an even number of data points in the original ordered data set,
     // split this data set exactly in half.
-    for (let i = 0; i < sorted.length; i++) {
+    for (let i = 0; i < len; i++) {
       if (i < mid) lowerHalf.push(sorted[i])
       if (i >= mid) upperHalf.push(sorted[i])
     }
